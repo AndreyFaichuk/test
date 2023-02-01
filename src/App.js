@@ -1,11 +1,25 @@
-import React from 'react'
+import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function App() {
+import Page  from './components/styled/Page'
+import ItemsList from './pages/itemsList'
+import InfoItem from './pages/infoItem/'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>hello there</p>
-      </header>
-    </div>
+    <>
+    <Page>
+      <Router>
+        <Routes>
+          <Route path='/about/:id' element={<InfoItem />} />
+          <Route path='/' element={<ItemsList />} />
+        </Routes>
+      </Router>
+    </Page>
+    <ToastContainer/>
+    </>
   )
 }
+
+export default App
